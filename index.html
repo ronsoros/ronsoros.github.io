@@ -8,6 +8,7 @@
           var file = new File([document.all('send').value], document.all('name').value);
           client.seed(file, function(torrent){ document.all('deliver').innerHTML = 'Link to posted file:\nhttp://ronsoros.github.io/?' + torrent.magnetURI });
         }
+      
     </script>
   </head>
   <body style='font-family: Arial; font-size: 14px;'>
@@ -19,6 +20,25 @@
     Name: <input type=text id='name'><br/>
     <textarea style='width:100%;height:300px' id='send'></textarea>
     <button onClick='postcode()'>Upload</button>
+    <script>
+      var query = window.location.search.slice(1);
+      if ( query != "" ) {
+       var client = new WebTorrent();
+        client.add(query, function (torrent) {
+  // Torrents can contain many files. Let's use the first.
+  var file = torrent.files[0]
+
+  // Display the file by adding it to the DOM. Supports video, audio, image, etc. files
+   var reader = new FileReader();
+reader.addEventListener("loadend", function() {
+   // reader.result contains the contents of blob as a typed array
+  document.all('deliver').innerHTML = reader.result;
+});
+          file.getBlob(function(err,blob) {
+reader.readAsText(blob);
+          })
+          });
+      }
   </body>
 </html>
   
