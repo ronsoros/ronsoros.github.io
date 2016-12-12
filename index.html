@@ -2,13 +2,21 @@
   <head>
     <title>codedump</title>
     <script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
-    
+    <script>
+        function postcode() {
+          var client = new WebTorrent();
+          var file = new File(document.all('send').value, document.all('name').value);
+          client.seed(file, function(torrent){ alert(torrent.magnetURI); });
+        }
+    </script>
   </head>
   <body style='font-family: Arial; font-size: 14px;'>
   <h1>codedump</h1>share code instantly
   <hr/>
     <xmp id='deliver'></xmp>
     <hr/>
+    <h2>New Source File</h2>
+    Name: <input type=text id='name'><br/>
     <textarea style='width:100%;height:300px' id='send'></textarea>
     <button onClick='postcode()'>Upload</button>
   </body>
