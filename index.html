@@ -21,6 +21,7 @@
     <textarea style='width:100%;height:300px' id='send'></textarea>
     <button onClick='postcode()'>Upload</button>
     <script>
+ 
       var query = window.location.search.slice(1);
       if ( query != "" ) {
        document.all('deliver').innerHTML = "Loading...";
@@ -40,6 +41,7 @@ reader.readAsText(blob);
           })
           });
       }
+    </script>
   </body>
 </html>
   
