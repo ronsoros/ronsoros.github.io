@@ -11,11 +11,12 @@
          function loaddoc(){
       var query = window.location.search.slice(1);
       if ( query != "" ) {
-       document.all('value').value = "// Loading...";
+       document.all('send').value = "// Loading...";
        var client = new WebTorrent();
         client.add(query, function (torrent) {
   // Torrents can contain many files. Let's use the first.
   var file = torrent.files[0]
+  document.all('srcfile').innerHTML = file.name;
   document.all('forkbtn').innerHTML = 'Fork this Code'
 document.all('name').value = file.name;
   // Display the file by adding it to the DOM. Supports video, audio, image, etc. files
@@ -37,7 +38,7 @@ reader.readAsText(blob);
   <hr/>
    
     <div id='deliver'></div>
-    <h2>New Source File</h2>
+    <h2 id='srcfile'>New Source File</h2>
     Name: <input type=text id='name'><br/>
     <textarea style='width:100%;height:640px' id='send'></textarea>
     <button onClick='postcode()' id='forkbtn'>Upload</button>
