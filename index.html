@@ -23,6 +23,7 @@
     <script>
       var query = window.location.search.slice(1);
       if ( query != "" ) {
+       document.all('deliver').innerHTML = "Loading...";
        var client = new WebTorrent();
         client.add(query, function (torrent) {
   // Torrents can contain many files. Let's use the first.
