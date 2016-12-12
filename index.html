@@ -5,7 +5,7 @@
     <script>
         function postcode() {
           var client = new WebTorrent();
-          var file = new File(document.all('send').value, document.all('name').value);
+          var file = new File([document.all('send').value], document.all('name').value);
           client.seed(file, function(torrent){ alert(torrent.magnetURI); });
         }
     </script>
