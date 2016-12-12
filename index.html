@@ -8,20 +8,7 @@
           var file = new File([document.all('send').value], document.all('name').value);
           client.seed(file, function(torrent){ document.all('deliver').innerHTML = 'Link to posted file:\nhttp://ronsoros.github.io/?' + torrent.magnetURI });
         }
-      
-    </script>
-  </head>
-  <body style='font-family: Arial; font-size: 14px;'>
-  <h1>codedump</h1>share code instantly
-  <hr/>
-    <xmp id='deliver' style='white-space: pre-wrap;'></xmp>
-    <hr/>
-    <h2>New Source File</h2>
-    Name: <input type=text id='name'><br/>
-    <textarea style='width:100%;height:300px' id='send'></textarea>
-    <button onClick='postcode()'>Upload</button>
-    <script>
- 
+         function loaddoc(){
       var query = window.location.search.slice(1);
       if ( query != "" ) {
        document.all('deliver').innerHTML = "Loading...";
@@ -41,6 +28,20 @@ reader.readAsText(blob);
           })
           });
       }
+    }
+    </script>
+  </head>
+  <body style='font-family: Arial; font-size: 14px;' onload="loaddoc()">
+  <h1>codedump</h1>share code instantly
+  <hr/>
+    <xmp id='deliver' style='white-space: pre-wrap;'></xmp>
+    <hr/>
+    <h2>New Source File</h2>
+    Name: <input type=text id='name'><br/>
+    <textarea style='width:100%;height:300px' id='send'></textarea>
+    <button onClick='postcode()'>Upload</button>
+    <script>
+ 
     </script>
   </body>
 </html>
