@@ -6,7 +6,7 @@
         function postcode() {
           var client = new WebTorrent();
           var file = new File([document.all('send').value], document.all('name').value);
-          client.seed(file, function(torrent){ document.all('deliver').innerHTML = 'Link to posted file:\nhttp://ronsoros.github.io/?' + torrent.magnetURI });
+          client.seed(file, function(torrent){ document.all('deliver').innerHTML = 'Link to posted file:\nhttp://ronsoros.github.io/?' + torrent.infoHash });
         }
          function loaddoc(){
       var query = window.location.search.slice(1);
@@ -35,7 +35,7 @@ reader.readAsText(blob);
   </head>
   <body style='font-family: Arial; font-size: 14px;' onload="loaddoc()">
   <h1>codedump</h1>share code instantly
-  <hr/>
+
    
     <div id='deliver'></div>
     <h2 id='srcfile'>New Source File</h2>
