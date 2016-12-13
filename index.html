@@ -11,6 +11,8 @@
          function loaddoc(){
       var query = window.location.search.slice(1);
       if ( query != "" ) {
+        var tmpa = "magnet:?xt=urn:btih:$HASH&dn=inetd.c&tr=udp%3A%2F%2Fexodus.desync.com%3A6969&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com";
+        query = tmpa.replace('$HASH', query);
        document.all('send').value = "// Loading...";
        var client = new WebTorrent();
         client.add(query, function (torrent) {
